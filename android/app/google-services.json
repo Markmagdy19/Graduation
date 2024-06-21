@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "236818307899",
+    "project_id": "hospital2-221f5",
+    "storage_bucket": "hospital2-221f5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:236818307899:android:702eab559c3a2839d3351e",
+        "android_client_info": {
+          "package_name": "com.harshRajpurohit.we_chat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIJgiRjDOsIRMDTPU13fZ0xO-1dtu1lOw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
