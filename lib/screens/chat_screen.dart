@@ -175,8 +175,9 @@ class _ChatScreenState extends State<ChatScreen> {
                         width: mq.height * .05,
                         height: mq.height * .05,
                         fit: BoxFit.cover,
-                        imageUrl:
-                            list.isNotEmpty ? list[0].image : widget.user.image,
+                        imageUrl: list.isNotEmpty
+                            ? list[0].imageUrl.toString()
+                            : widget.user.imageUrl.toString(),
                         errorWidget: (context, url, error) =>
                             const CircleAvatar(
                                 child: Icon(CupertinoIcons.person)),
@@ -192,7 +193,10 @@ class _ChatScreenState extends State<ChatScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         //user name
-                        Text(list.isNotEmpty ? list[0].name : widget.user.name,
+                        Text(
+                            list.isNotEmpty
+                                ? list[0].name.toString()
+                                : widget.user.name.toString(),
                             style: const TextStyle(
                                 fontSize: 16,
                                 color: Colors.black87,
@@ -204,14 +208,16 @@ class _ChatScreenState extends State<ChatScreen> {
                         //last seen time of user
                         Text(
                             list.isNotEmpty
-                                ? list[0].isOnline
+                                ? list[0].isOnline ?? false
                                     ? 'Online'
                                     : MyDateUtil.getLastActiveTime(
                                         context: context,
-                                        lastActive: list[0].lastActive)
+                                        lastActive:
+                                            list[0].lastActive.toString())
                                 : MyDateUtil.getLastActiveTime(
                                     context: context,
-                                    lastActive: widget.user.lastActive),
+                                    lastActive:
+                                        widget.user.lastActive.toString()),
                             style: const TextStyle(
                                 fontSize: 13, color: Colors.black54)),
                       ],

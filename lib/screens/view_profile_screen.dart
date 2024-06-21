@@ -24,7 +24,7 @@ class _ViewProfileScreenState extends State<ViewProfileScreen> {
       onTap: FocusScope.of(context).unfocus,
       child: Scaffold(
           //app bar
-          appBar: AppBar(title: Text(widget.user.name)),
+          appBar: AppBar(title: Text(widget.user.name.toString())),
 
           //user about
           floatingActionButton: Row(
@@ -40,7 +40,7 @@ class _ViewProfileScreenState extends State<ViewProfileScreen> {
               Text(
                   MyDateUtil.getLastMessageTime(
                       context: context,
-                      time: widget.user.createdAt,
+                      time: widget.user.createdAt.toString(),
                       showYear: true),
                   style: const TextStyle(color: Colors.black54, fontSize: 15)),
             ],
@@ -62,7 +62,7 @@ class _ViewProfileScreenState extends State<ViewProfileScreen> {
                       width: mq.height * .2,
                       height: mq.height * .2,
                       fit: BoxFit.cover,
-                      imageUrl: widget.user.image,
+                      imageUrl: widget.user.imageUrl.toString(),
                       errorWidget: (context, url, error) => const CircleAvatar(
                           child: Icon(CupertinoIcons.person)),
                     ),
@@ -72,7 +72,7 @@ class _ViewProfileScreenState extends State<ViewProfileScreen> {
                   SizedBox(height: mq.height * .03),
 
                   // user email label
-                  Text(widget.user.email,
+                  Text(widget.user.email.toString(),
                       style:
                           const TextStyle(color: Colors.black87, fontSize: 16)),
 
@@ -90,7 +90,7 @@ class _ViewProfileScreenState extends State<ViewProfileScreen> {
                             fontWeight: FontWeight.w500,
                             fontSize: 15),
                       ),
-                      Text(widget.user.about,
+                      Text(widget.user.about.toString(),
                           style: const TextStyle(
                               color: Colors.black54, fontSize: 15)),
                     ],

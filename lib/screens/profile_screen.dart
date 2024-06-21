@@ -106,7 +106,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   width: mq.height * .2,
                                   height: mq.height * .2,
                                   fit: BoxFit.cover,
-                                  imageUrl: widget.user.image,
+                                  imageUrl: widget.user.imageUrl.toString(),
                                   errorWidget: (context, url, error) =>
                                       const CircleAvatar(
                                           child: Icon(CupertinoIcons.person)),
@@ -134,7 +134,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     SizedBox(height: mq.height * .03),
 
                     // user email label
-                    Text(widget.user.email,
+                    Text(widget.user.email.toString(),
                         style: const TextStyle(
                             color: Colors.black54, fontSize: 16)),
 

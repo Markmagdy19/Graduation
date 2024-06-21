@@ -32,7 +32,7 @@ class ProfileDialog extends StatelessWidget {
                     width: mq.width * .5,
                     height: mq.width * .5,
                     fit: BoxFit.cover,
-                    imageUrl: user.image,
+                    imageUrl: user.imageUrl.toString(),
                     errorWidget: (context, url, error) =>
                         const CircleAvatar(child: Icon(CupertinoIcons.person)),
                   ),
@@ -44,7 +44,7 @@ class ProfileDialog extends StatelessWidget {
                 left: mq.width * .04,
                 top: mq.height * .02,
                 width: mq.width * .55,
-                child: Text(user.name,
+                child: Text(user.name.toString(),
                     style: const TextStyle(
                         fontSize: 18, fontWeight: FontWeight.w500)),
               ),

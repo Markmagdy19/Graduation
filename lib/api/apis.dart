@@ -28,7 +28,7 @@ class APIs {
       name: user.displayName.toString(),
       email: user.email.toString(),
       about: "Hey, I'm using We Chat!",
-      image: user.photoURL.toString(),
+      imageUrl: user.photoURL.toString(),
       createdAt: '',
       isOnline: false,
       lastActive: '',
@@ -163,7 +163,7 @@ class APIs {
         name: user.displayName.toString(),
         email: user.email.toString(),
         about: "Hey, I'm using We Chat!",
-        image: user.photoURL.toString(),
+        imageUrl: user.photoURL.toString(),
         createdAt: time,
         isOnline: false,
         lastActive: time,
@@ -185,24 +185,15 @@ class APIs {
   }
 
   // for getting all users from firestore database
-  static Stream<QuerySnapshot<Map<String, dynamic>>> getAllUsers(
-      List<String> userIds) {
+  static Future<List<Map<String, DocumentSnapshot<Map<String, dynamic>>>>>
+      getAllUsers(List<String> userIds) async {
     log('\nUserIds: $userIds');
 
-
-    final variable =  firestore
-
-        .collection('users')
-        .where('id',
-            whereIn: userIds.isEmpty
-                ? ['']
-                : userIds) //because empty list throws an error
-        // .where('id', isNotEqualTo: user.uid)
-        .snapshots();
-    print(variable);
-    print(userIds);
-    return variable ;
-
+    final List<Map<String, DocumentSnapshot<Map<String, dynamic>>>> list = [];
+    for (var id in userIds) {
+      list.add({id: await firestore.collection('users').doc(id).get()});
+    }
+    return list;
   }
 
   // for adding an user to my user when first message is send
@@ -210,7 +201,7 @@ class APIs {
       ChatUser chatUser, String msg, Type type) async {
     await firestore
         .collection('users')
-        .doc(chatUser.id)
+        .doc()
         .collection('my_users')
         .doc(user.uid)
         .set({}).then((value) => sendMessage(chatUser, msg, type));
@@ -241,11 +232,11 @@ class APIs {
     });
 
     //updating image in firestore database
-    me.image = await ref.getDownloadURL();
+    me.imageUrl = await ref.getDownloadURL();
     await firestore
         .collection('users')
         .doc(user.uid)
-        .update({'image': me.image});
+        .update({'image': me.imageUrl});
   }
 
   // for getting specific user info
@@ -279,7 +270,7 @@ class APIs {
   static Stream<QuerySnapshot<Map<String, dynamic>>> getAllMessages(
       ChatUser user) {
     return firestore
-        .collection('chats/${getConversationID(user.id)}/messages/')
+        .collection('chats/${getConversationID(user.id.toString())}/messages/')
         .orderBy('sent', descending: true)
         .snapshots();
   }
@@ -292,16 +283,16 @@ class APIs {
 
     //message to send
     final Message message = Message(
-        toId: chatUser.id,
+        toId: chatUser.id.toString(),
         msg: msg,
         read: '',
         type: type,
         fromId: user.uid,
         sent: time);
 
-    final ref = firestore
-        .collection('chats/${getConversationID(chatUser.id)}/messages/');
-    await ref.doc(time).set(message.toJson()).then((value) =>
+    final ref = firestore.collection(
+        'chats/${getConversationID(chatUser.id.toString())}/messages/');
+    ref.doc(time).set(message.toJson()).then((value) =>
         sendPushNotification(chatUser, type == Type.text ? msg : 'image'));
   }
 
@@ -317,7 +308,7 @@ class APIs {
   static Stream<QuerySnapshot<Map<String, dynamic>>> getLastMessage(
       ChatUser user) {
     return firestore
-        .collection('chats/${getConversationID(user.id)}/messages/')
+        .collection('chats/${getConversationID(user.id.toString())}/messages/')
         .orderBy('sent', descending: true)
         .limit(1)
         .snapshots();
@@ -330,7 +321,7 @@ class APIs {
 
     //storage file ref with path
     final ref = storage.ref().child(
-        'images/${getConversationID(chatUser.id)}/${DateTime.now().millisecondsSinceEpoch}.$ext');
+        'images/${getConversationID(chatUser.id.toString())}/${DateTime.now().millisecondsSinceEpoch}.$ext');
 
     //uploading image
     await ref

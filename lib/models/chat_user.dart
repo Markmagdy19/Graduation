@@ -1,31 +1,31 @@
 class ChatUser {
   ChatUser({
-    required this.image,
-    required this.about,
-    required this.name,
-    required this.createdAt,
-    required this.isOnline,
-    required this.id,
-    required this.lastActive,
-    required this.email,
-    required this.pushToken,
+    this.imageUrl,
+    this.about,
+    this.name,
+    this.createdAt,
+    this.isOnline,
+    this.id,
+    this.lastActive,
+    this.email,
+    this.pushToken,
   });
-  late String image;
-  late String about;
-  late String name;
-  late String createdAt;
-  late bool isOnline;
-  late String id;
-  late String lastActive;
-  late String email;
-  late String pushToken;
+  late String? imageUrl;
+  late String? about;
+  late String? name;
+  late String? createdAt;
+  late bool? isOnline;
+  late String? id;
+  late String? lastActive;
+  late String? email;
+  late String? pushToken;
 
   ChatUser.fromJson(Map<String, dynamic> json) {
-    image = json['image'] ?? '';
+    imageUrl = json['image_url'] ?? '';
     about = json['about'] ?? '';
     name = json['name'] ?? '';
     createdAt = json['created_at'] ?? '';
-    isOnline = json['is_online'] ?? '';
+    isOnline = json['is_online'].toString() == "false" ?? false;
     id = json['id'] ?? '';
     lastActive = json['last_active'] ?? '';
     email = json['email'] ?? '';
@@ -34,7 +34,7 @@ class ChatUser {
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
-    data['image'] = image;
+    data['image_url'] = imageUrl;
     data['about'] = about;
     data['name'] = name;
     data['created_at'] = createdAt;

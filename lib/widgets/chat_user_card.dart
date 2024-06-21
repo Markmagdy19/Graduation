@@ -60,7 +60,7 @@ class _ChatUserCardState extends State<ChatUserCard> {
                     child: CachedNetworkImage(
                       width: mq.height * .055,
                       height: mq.height * .055,
-                      imageUrl: widget.user.image,
+                      imageUrl: widget.user.imageUrl.toString(),
                       fit: BoxFit.cover,
                       errorWidget: (context, url, error) => const CircleAvatar(
                           child: Icon(CupertinoIcons.person)),
@@ -69,15 +69,15 @@ class _ChatUserCardState extends State<ChatUserCard> {
                 ),
 
                 //user name
-                title: Text(widget.user.name),
+                title: Text(widget.user.name.toString()),
 
                 //last message
                 subtitle: Text(
                     _message != null
                         ? _message!.type == Type.image
                             ? 'image'
-                            : _message!.msg
-                        : widget.user.about,
+                            : _message!.msg.toString()
+                        : widget.user.email.toString(),
                     maxLines: 1),
 
                 //last message time

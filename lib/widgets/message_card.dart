@@ -20,9 +20,16 @@ class MessageCard extends StatefulWidget {
 }
 
 class _MessageCardState extends State<MessageCard> {
+  late bool isMe;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    isMe = APIs.user.uid == widget.message.fromId;
+  }
+
   @override
   Widget build(BuildContext context) {
-    bool isMe = APIs.user.uid == widget.message.fromId;
     return InkWell(
         onLongPress: () {
           _showBottomSheet(isMe);
@@ -98,68 +105,90 @@ class _MessageCardState extends State<MessageCard> {
   Widget _greenMessage() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        //message time
-        Row(
-          children: [
-            //for adding some space
-            SizedBox(width: mq.width * .04),
+      children: isMe
+          ? [
+              //message time
+              buildTime(),
 
-            //double tick blue icon for message read
-            if (widget.message.read.isNotEmpty)
-              const Icon(Icons.done_all_rounded, color: Colors.blue, size: 20),
+              //message content
+              buildMessage(),
+            ]
+          : [
+              //message content
+              buildMessage(),
+              //message time
+              buildTime(),
+            ],
+    );
+  }
 
-            //for adding some space
-            const SizedBox(width: 2),
-
-            //sent time
+  Flexible buildMessage() {
+    return Flexible(
+      child: Container(
+        padding: EdgeInsets.all(widget.message.type == Type.image
+            ? mq.width * .03
+            : mq.width * .04),
+        margin: EdgeInsets.symmetric(
+            horizontal: mq.width * .04, vertical: mq.height * .01),
+        decoration: BoxDecoration(
+            color:
+                isMe ? Color.fromARGB(255, 218, 255, 176) : Colors.lightGreen,
+            border: Border.all(
+                color: !isMe
+                    ? Color.fromARGB(255, 218, 255, 176)
+                    : Colors.lightGreen),
+            //making borders curved
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(30),
+                topRight: Radius.circular(30),
+                bottomLeft: Radius.circular(isMe ? 0.0 : 30),
+                bottomRight: Radius.circular(!isMe ? 0.0 : 30))),
+        child: widget.message.type == Type.text
+            ?
+            //show text
             Text(
-              MyDateUtil.getFormattedTime(
-                  context: context, time: widget.message.sent),
-              style: const TextStyle(fontSize: 13, color: Colors.black54),
-            ),
-          ],
-        ),
-
-        //message content
-        Flexible(
-          child: Container(
-            padding: EdgeInsets.all(widget.message.type == Type.image
-                ? mq.width * .03
-                : mq.width * .04),
-            margin: EdgeInsets.symmetric(
-                horizontal: mq.width * .04, vertical: mq.height * .01),
-            decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 218, 255, 176),
-                border: Border.all(color: Colors.lightGreen),
-                //making borders curved
-                borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(30),
-                    topRight: Radius.circular(30),
-                    bottomLeft: Radius.circular(30))),
-            child: widget.message.type == Type.text
-                ?
-                //show text
-                Text(
-                    widget.message.msg,
-                    style: const TextStyle(fontSize: 15, color: Colors.black87),
-                  )
-                :
-                //show image
-                ClipRRect(
-                    borderRadius: BorderRadius.circular(15),
-                    child: CachedNetworkImage(
-                      imageUrl: widget.message.msg,
-                      placeholder: (context, url) => const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: CircularProgressIndicator(strokeWidth: 2),
-                      ),
-                      errorWidget: (context, url, error) =>
-                          const Icon(Icons.image, size: 70),
-                    ),
+                widget.message.msg,
+                style: const TextStyle(fontSize: 15, color: Colors.black87),
+              )
+            :
+            //show image
+            ClipRRect(
+                borderRadius: BorderRadius.circular(15),
+                child: CachedNetworkImage(
+                  imageUrl: widget.message.msg,
+                  placeholder: (context, url) => const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: CircularProgressIndicator(strokeWidth: 2),
                   ),
-          ),
+                  errorWidget: (context, url, error) =>
+                      const Icon(Icons.image, size: 70),
+                ),
+              ),
+      ),
+    );
+  }
+
+  Row buildTime() {
+    return Row(
+      children: [
+        //for adding some space
+        SizedBox(width: mq.width * .04),
+
+        //double tick blue icon for message read
+        if (widget.message.read.isNotEmpty)
+          const Icon(Icons.done_all_rounded, color: Colors.blue, size: 20),
+
+        //for adding some space
+        const SizedBox(width: 2),
+
+        //sent time
+        Text(
+          MyDateUtil.getFormattedTime(
+              context: context, time: widget.message.sent),
+          style: const TextStyle(fontSize: 13, color: Colors.black54),
         ),
+        //for adding some space
+        SizedBox(width: mq.width * .04),
       ],
     );
   }
