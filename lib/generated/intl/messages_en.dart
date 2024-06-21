@@ -27,6 +27,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Account Active"),
         "Add_Task": MessageLookupByLibrary.simpleMessage("Add Task"),
         "Add_Task_Button": MessageLookupByLibrary.simpleMessage("+Add Task"),
+        "Ai_Bot": MessageLookupByLibrary.simpleMessage("Ai Bot"),
         "All_fields_are_required":
             MessageLookupByLibrary.simpleMessage("All fields are required"),
         "App_Settings": MessageLookupByLibrary.simpleMessage("App Settings"),
@@ -45,6 +46,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Email_Address": MessageLookupByLibrary.simpleMessage("Email Address"),
         "End_Time": MessageLookupByLibrary.simpleMessage("End Time"),
         "English": MessageLookupByLibrary.simpleMessage("English"),
+        "Enter_Your_Message":
+            MessageLookupByLibrary.simpleMessage("How Can i assist you"),
         "Enter_title_here":
             MessageLookupByLibrary.simpleMessage("Enter title here"),
         "Enter_your_Note":

@@ -1,13 +1,89 @@
 {
   "project_info": {
-    "project_number": "236818307899",
-    "project_id": "hospital2-221f5",
-    "storage_bucket": "hospital2-221f5.appspot.com"
+    "project_number": "406240150784",
+    "project_id": "hospital-6383a",
+    "storage_bucket": "hospital-6383a.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:236818307899:android:702eab559c3a2839d3351e",
+        "mobilesdk_app_id": "1:406240150784:android:837e976f62cdf0953f1fe5",
+        "android_client_info": {
+          "package_name": "com.example.chat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAa95cT-kyYWxqoNFCGZyHDCxxHWUBDaVY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:406240150784:android:0de32cca1fc19e223f1fe5",
+        "android_client_info": {
+          "package_name": "com.example.chatt"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAa95cT-kyYWxqoNFCGZyHDCxxHWUBDaVY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:406240150784:android:3b5b3e75fa65c6293f1fe5",
+        "android_client_info": {
+          "package_name": "com.example.openemr"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAa95cT-kyYWxqoNFCGZyHDCxxHWUBDaVY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:406240150784:android:072e9770f8e0da5d3f1fe5",
+        "android_client_info": {
+          "package_name": "com.example.tic_tac"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAa95cT-kyYWxqoNFCGZyHDCxxHWUBDaVY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:406240150784:android:2a9256af0daba5683f1fe5",
         "android_client_info": {
           "package_name": "com.harshRajpurohit.we_chat"
         }
@@ -15,7 +91,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAIJgiRjDOsIRMDTPU13fZ0xO-1dtu1lOw"
+          "current_key": "AIzaSyAa95cT-kyYWxqoNFCGZyHDCxxHWUBDaVY"
         }
       ],
       "services": {

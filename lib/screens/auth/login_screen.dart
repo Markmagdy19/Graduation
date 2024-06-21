@@ -73,12 +73,15 @@ class _LoginScreenState extends State<LoginScreen> {
         idToken: googleAuth?.idToken,
       );
 
+
+
       // Once signed in, return the UserCredential
       return await APIs.auth.signInWithCredential(credential);
     } catch (e) {
       log('\n_signInWithGoogle: $e');
 
       if (mounted) {
+        print(e.toString());
         Dialogs.showSnackbar(context, 'Something Went Wrong (Check Internet!)');
       }
 

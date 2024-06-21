@@ -32,7 +32,7 @@ class _ArticleListScreenState extends State<ArticleListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => const ChatScreen()));  },child: Image.asset("assets/images/technical-support.png"),),
+      floatingActionButton: FloatingActionButton(onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => const ChatScreen()));  },child: Image.asset("images/technical-support.png"),),
       appBar: AppBar(
         title:  Text( S.of(context).PubMed_Articles),
         actions: [

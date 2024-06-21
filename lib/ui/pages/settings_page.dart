@@ -83,12 +83,7 @@ class _SettingPageUIState extends State<SettingsPageUI> {
                   builder: (BuildContext context) {
                     return AlertDialog(
                       title: Text(S.of(context).Change_Password),
-                      content: const Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          ChangePassword()
-                        ],
-                      ),
+                      content: const ChangePassword(),
                     );
                   },
                 );

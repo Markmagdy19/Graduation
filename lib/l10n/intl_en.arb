@@ -59,6 +59,8 @@
   "home" : "Home",
   "todo" : "Todo",
   "chat" : "Chat",
-  "settings" : "Settings"
+  "settings" : "Settings",
+  "Ai_Bot" : "Ai Bot",
+  "Enter_Your_Message" : "How Can i assist you"
 }
 

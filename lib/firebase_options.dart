@@ -47,30 +47,30 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAIJgiRjDOsIRMDTPU13fZ0xO-1dtu1lOw',
-    appId: '1:236818307899:android:702eab559c3a2839d3351e',
-    messagingSenderId: '236818307899',
-    projectId: 'hospital2-221f5',
-    storageBucket: 'hospital2-221f5.appspot.com',
+    apiKey: 'AIzaSyAa95cT-kyYWxqoNFCGZyHDCxxHWUBDaVY',
+    appId: '1:406240150784:android:2a9256af0daba5683f1fe5',
+    messagingSenderId: '406240150784',
+    projectId: 'hospital-6383a',
+    storageBucket: 'hospital-6383a.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyB1PBa7YwZK8gffo4nqGR6wlkyzrnZteDo',
-    appId: '1:236818307899:ios:bfb81028abeb3b09d3351e',
-    messagingSenderId: '236818307899',
-    projectId: 'hospital2-221f5',
-    storageBucket: 'hospital2-221f5.appspot.com',
+    apiKey: 'AIzaSyCHICj5g1GWde8uwTcrt6G3JyLY606h5nQ',
+    appId: '1:406240150784:ios:5c5b200f84f7b7b93f1fe5',
+    messagingSenderId: '406240150784',
+    projectId: 'hospital-6383a',
+    storageBucket: 'hospital-6383a.appspot.com',
     iosBundleId: 'com.harshRajpurohit.weChat',
   );
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDbLfgdCmVAy1wE6hcbBKatyx11VJ2xtq0',
-    appId: '1:236818307899:web:ed6e1f4791e5e285d3351e',
-    messagingSenderId: '236818307899',
-    projectId: 'hospital2-221f5',
-    authDomain: 'hospital2-221f5.firebaseapp.com',
-    storageBucket: 'hospital2-221f5.appspot.com',
-    measurementId: 'G-DZWPYCNBDK',
+    apiKey: 'AIzaSyAJYw0XZ4gUIM7DT5rTHZtkexTjFur5_N4',
+    appId: '1:406240150784:web:548747120bb4994b3f1fe5',
+    messagingSenderId: '406240150784',
+    projectId: 'hospital-6383a',
+    authDomain: 'hospital-6383a.firebaseapp.com',
+    storageBucket: 'hospital-6383a.appspot.com',
+    measurementId: 'G-Z9NVW6JPEJ',
   );
 
 }

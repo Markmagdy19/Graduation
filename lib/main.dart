@@ -8,6 +8,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_notification_channel/flutter_notification_channel.dart';
 import 'package:flutter_notification_channel/notification_importance.dart';
 import 'package:provider/provider.dart';
+import 'package:we_chat/screens/auth.dart';
 import 'package:we_chat/screens/auth/login_screen.dart';
 import 'package:we_chat/ui/utils/language_provider.dart';
 import 'package:we_chat/ui/utils/theme_provider.dart';
@@ -76,7 +77,7 @@ class MyApp extends StatelessWidget {
                 if (snapshot.hasData) {
                   return const Navigatebar();
                 }
-                return const LoginScreen();
+                return const AuthScreen();
               },
             ),
           );

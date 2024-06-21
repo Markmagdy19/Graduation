@@ -659,6 +659,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Ai Bot`
+  String get Ai_Bot {
+    return Intl.message(
+      'Ai Bot',
+      name: 'Ai_Bot',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How Can i assist you`
+  String get Enter_Your_Message {
+    return Intl.message(
+      'How Can i assist you',
+      name: 'Enter_Your_Message',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -92,20 +92,6 @@ dependencies:
   intl_utils: ^2.8.7
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -129,3 +115,14 @@ flutter:
   # App Assets
   assets:
     - images/
+
+
+
+#SQLITE with moore for all platforms
+moor: ^4.6.1+1
+moor_flutter: ^4.1.0
+ffi: ^2.1.2
+# for sqlite on android
+sqlite3_flutter_libs:
+flutter_intl:
+  enabled: true

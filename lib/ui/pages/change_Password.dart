@@ -27,11 +27,7 @@ class _ChangePasswordState extends State<ChangePassword> {
   @override
   Widget build(BuildContext context) {
    //   auth.signOut();
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Change Password'),
-      ),
-      body: Padding(
+    return  Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,7 +36,7 @@ class _ChangePasswordState extends State<ChangePassword> {
             TextFormField(
               controller: oldPasswordController,
               decoration: const InputDecoration(
-                isDense: true,
+               // isDense: true,
                 labelText: "Old Password",
                 hintText: "***********",
                 border: OutlineInputBorder(),
@@ -50,7 +46,7 @@ class _ChangePasswordState extends State<ChangePassword> {
             TextFormField(
               controller: newPasswordController,
               decoration: const InputDecoration(
-                isDense: true,
+                //isDense: true,
                 labelText: "New Password",
                 hintText: "***********",
                 border: OutlineInputBorder(),
@@ -64,15 +60,19 @@ class _ChangePasswordState extends State<ChangePassword> {
                     email: currentUser!.email!,
                     oldPassword: oldPasswordController.text,
                     newPassword: newPasswordController.text,
+
+                     // Navigate back to the previous page
+
                   );
                   print("Password Changed");
+                  Navigator.pop(context);
                 }
               },
               child: const Text("Change Password"),
             ),
           ],
         ),
-      ),
+
     );
   }
 

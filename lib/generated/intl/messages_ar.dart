@@ -26,6 +26,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Account_Active": MessageLookupByLibrary.simpleMessage("الحساب نشط"),
         "Add_Task": MessageLookupByLibrary.simpleMessage("إضافة مهمة"),
         "Add_Task_Button": MessageLookupByLibrary.simpleMessage("+إضافة مهمة"),
+        "Ai_Bot":
+            MessageLookupByLibrary.simpleMessage("روبوت الذكاء الاصطناعي"),
         "All_fields_are_required":
             MessageLookupByLibrary.simpleMessage("جميع الحقول مطلوبة"),
         "App_Settings":
@@ -45,6 +47,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("عنوان البريد الإلكتروني"),
         "End_Time": MessageLookupByLibrary.simpleMessage("وقت الانتهاء"),
         "English": MessageLookupByLibrary.simpleMessage("إنجليزي"),
+        "Enter_Your_Message":
+            MessageLookupByLibrary.simpleMessage("كيف يمكنني مساعدتك"),
         "Enter_title_here":
             MessageLookupByLibrary.simpleMessage("أدخل العنوان هنا"),
         "Enter_your_Note": MessageLookupByLibrary.simpleMessage("أدخل ملاحظتك"),

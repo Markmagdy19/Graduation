@@ -189,7 +189,9 @@ class APIs {
       List<String> userIds) {
     log('\nUserIds: $userIds');
 
-    return firestore
+
+    final variable =  firestore
+
         .collection('users')
         .where('id',
             whereIn: userIds.isEmpty
@@ -197,6 +199,10 @@ class APIs {
                 : userIds) //because empty list throws an error
         // .where('id', isNotEqualTo: user.uid)
         .snapshots();
+    print(variable);
+    print(userIds);
+    return variable ;
+
   }
 
   // for adding an user to my user when first message is send
