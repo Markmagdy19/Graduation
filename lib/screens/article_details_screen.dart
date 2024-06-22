@@ -22,10 +22,13 @@ class ArticleDetailsScreen extends StatelessWidget {
                 height: 12,
               ),
               Text(
-                article.pubmedArticleSet!.pubmedArticle!.medlineCitation!
-                    .article!.articleTitle!
-                    .replaceAll('[', '')
-                    .replaceAll(']', ''),
+                article.pubmedArticleSet?.pubmedArticle?.medlineCitation != null
+                    ? ((article.pubmedArticleSet?.pubmedArticle
+                                ?.medlineCitation!.article?.articleTitle ??
+                            "")
+                        .replaceAll('[', '')
+                        .replaceAll(']', ''))
+                    : "",
               ),
               SizedBox(
                 height: 24,
@@ -36,10 +39,18 @@ class ArticleDetailsScreen extends StatelessWidget {
                 height: 12,
               ),
               Text(
-                article.pubmedArticleSet!.pubmedArticle!.medlineCitation!
-                    .article!.abstract!.abstractText!
-                    .replaceAll('[', '')
-                    .replaceAll(']', ''),
+                article.pubmedArticleSet?.pubmedArticle?.medlineCitation != null
+                    ? ((article
+                                .pubmedArticleSet
+                                ?.pubmedArticle
+                                ?.medlineCitation!
+                                .article
+                                ?.abstract
+                                ?.abstractText ??
+                            "No Abstract available")
+                        .replaceAll('[', '')
+                        .replaceAll(']', ''))
+                    : "",
               ),
             ],
           ),

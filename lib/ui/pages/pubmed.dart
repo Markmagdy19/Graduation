@@ -39,7 +39,10 @@ class _ArticleListScreenState extends State<ArticleListScreen> {
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => const ChatScreen()));
         },
-        child: Image.asset("images/technical-support.png"),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Image.asset("images/technical-support.png"),
+        ),
       ),
       appBar: AppBar(
         title: Text(S.of(context).PubMed_Articles),
