@@ -90,6 +90,7 @@ dependencies:
   rxdart: ^0.27.2
   provider: ^6.1.2
   intl_utils: ^2.8.7
+  xml2json: ^6.2.3
 
 
 dev_dependencies:

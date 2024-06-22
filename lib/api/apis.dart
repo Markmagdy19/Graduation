@@ -7,7 +7,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:http/http.dart';
-
+import 'package:we_chat/models/article_details.dart';
+import 'package:xml/xml.dart' as xml;
+import 'package:http/http.dart' as http;
+import 'package:xml2json/xml2json.dart';
 import '../models/chat_user.dart';
 import '../models/message.dart';
 import 'notification_access_token.dart';
@@ -353,5 +356,30 @@ class APIs {
         .collection('chats/${getConversationID(message.toId)}/messages/')
         .doc(message.sent)
         .update({'msg': updatedMsg});
+  }
+
+  static Future<ArticleDetails> fetchArticleDetails(String articleId) async {
+    final url =
+        'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=$articleId&retmode=xml&rettype=full';
+
+    final response = await http.get(Uri.parse(url));
+
+    if (response.statusCode == 200) {
+      final res = response.body;
+      res.replaceAll('&', '');
+      print(res);
+      final document = xml.XmlDocument.parse(response.body);
+      var articleElement = document.findAllElements('PubmedArticleSet').first;
+
+      final xml2json = Xml2Json();
+      xml2json.parse(res);
+      final jsonString = xml2json.toParker();
+      final jsonObject = json.decode(jsonString);
+      print(jsonObject);
+      return ArticleDetails.fromJson(jsonObject as Map<String, dynamic>);
+    } else {
+      print('$articleId ${response.statusCode} ${response.body}');
+      throw Exception('Failed to load article');
+    }
   }
 }

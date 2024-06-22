@@ -1,3 +1,5 @@
+import 'package:we_chat/screens/article_details_screen.dart';
+
 import '../../models/article_summary_model.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -32,9 +34,15 @@ class _ArticleListScreenState extends State<ArticleListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => const ChatScreen()));  },child: Image.asset("images/technical-support.png"),),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const ChatScreen()));
+        },
+        child: Image.asset("images/technical-support.png"),
+      ),
       appBar: AppBar(
-        title:  Text( S.of(context).PubMed_Articles),
+        title: Text(S.of(context).PubMed_Articles),
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -62,7 +70,7 @@ class _ArticleListScreenState extends State<ArticleListScreen> {
                 setState(() {});
               },
               decoration: InputDecoration(
-                labelText: S.of(context).Search_Keyword ,
+                labelText: S.of(context).Search_Keyword,
                 suffixIcon: IconButton(
                   icon: const Icon(Icons.search),
                   onPressed: _searchArticles,
@@ -136,39 +144,51 @@ class _CustomArticleWidgetState extends State<CustomArticleWidget> {
     if ((widget.articleSummaryModel.result?.data?.title ?? "").isEmpty) {
       return Container();
     }
-    return Container(
-      padding: const EdgeInsets.all(8.0),
-      margin: const EdgeInsets.all(8.0),
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.white),
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(8),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 2,
-            blurRadius: 7,
-            offset: const Offset(0, 3), // changes position of shadow
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            widget.articleSummaryModel.result?.data?.title ?? "",
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 8),
-          widget.articleSummaryModel.result?.data?.authors?.isNotEmpty ?? false
-              ? Text(
-                  widget.articleSummaryModel.result?.data?.authors?.first
-                          .name ??
-                      "",
-                  style: const TextStyle(
-                      fontSize: 16, fontWeight: FontWeight.normal))
-              : const SizedBox(),
-        ],
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ArticleDetailsPage(
+                    articleId: widget.articleSummaryModel.result!.data!
+                        .articleids!.first.value
+                        .toString())));
+      },
+      child: Container(
+        padding: const EdgeInsets.all(8.0),
+        margin: const EdgeInsets.all(8.0),
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.white),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 2,
+              blurRadius: 7,
+              offset: const Offset(0, 3), // changes position of shadow
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              widget.articleSummaryModel.result?.data?.title ?? "",
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            widget.articleSummaryModel.result?.data?.authors?.isNotEmpty ??
+                    false
+                ? Text(
+                    widget.articleSummaryModel.result?.data?.authors?.first
+                            .name ??
+                        "",
+                    style: const TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.normal))
+                : const SizedBox(),
+          ],
+        ),
       ),
     );
   }
