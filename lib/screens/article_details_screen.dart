@@ -25,10 +25,10 @@ class ArticleDetailsScreen extends StatelessWidget {
                 article.pubmedArticleSet?.pubmedArticle?.medlineCitation != null
                     ? ((article.pubmedArticleSet?.pubmedArticle
                                 ?.medlineCitation!.article?.articleTitle ??
-                            "")
+                            "No Title available")
                         .replaceAll('[', '')
                         .replaceAll(']', ''))
-                    : "",
+                    : "No Title available",
               ),
               SizedBox(
                 height: 24,
@@ -50,7 +50,7 @@ class ArticleDetailsScreen extends StatelessWidget {
                             "No Abstract available")
                         .replaceAll('[', '')
                         .replaceAll(']', ''))
-                    : "",
+                    : "No Abstract available",
               ),
             ],
           ),
